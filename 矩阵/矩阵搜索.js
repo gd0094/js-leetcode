@@ -5,8 +5,9 @@
  */
 var exist = function (board, word) {
   function search(b, w, c, r) {
+    console.log(b, w, c, r)
     if (w == "") return true;
-    if (c < 0 || c > b.length || r < 0 || c > b[0].length) {
+    if (c < 0 || c >= b.length || r < 0 || r >= b[c].length) {
       return false;
     }
     if (b[c][r] != w[0]) return false;
@@ -31,9 +32,11 @@ var exist = function (board, word) {
         if (search(board, word, c, r)) {
           return true;
         }
-      } else {
-        return false;
       }
     }
   }
+  return false
 };
+let board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
+let word = "ABCCED"
+console.log(exist(board,word))
